@@ -1,0 +1,12 @@
+<!-- blog detail -->
+<div *ngIf="edit; else new">
+    <div [froalaEditor] [(ngModel)]="pageContent" [(froalaModel)]="editorContent"></div>
+    <div [froalaView]="editorContent"></div>
+</div>
+<ng-template  #new>
+    <div [froalaEditor] [(ngModel)]="pageContent" [(froalaModel)]="editorContent"></div>
+    <div [froalaView]="editorContent"></div>
+</ng-template >
+
+
+<button type="submit" (click)="sendData()">create post</button>
