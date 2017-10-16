@@ -1,12 +1,14 @@
 <!-- blog detail -->
 <div *ngIf="edit; else new">
-    <div [froalaEditor] [(ngModel)]="pageContent" [(froalaModel)]="editorContent"></div>
+    <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
     <div [froalaView]="editorContent"></div>
 </div>
 <ng-template  #new>
-    <div [froalaEditor] [(ngModel)]="pageContent" [(froalaModel)]="editorContent"></div>
+    Title: <input type="textarea" placeholder="title here" [(ngModel)]="title" /> 
+    <br/>
+    <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
     <div [froalaView]="editorContent"></div>
 </ng-template >
 
 
-<button type="submit" (click)="sendData()">create post</button>
+<button type="submit" (click)="newBlog()">create post</button>

@@ -1,3 +1,4 @@
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogsService } from '../shared/services/blogs.service';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +13,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
   imports: [
     CommonModule,
     FormsModule,
+    SimpleNotificationsModule.forRoot(),
     adminRouting,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
   ],

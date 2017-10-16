@@ -5,7 +5,7 @@ Comment = new Schema({
         type:String,
         required:true
     },
-    author:{
+    author:{ // populate or save detail from logged in user
         type:String,
         name:String,
         email:{ type:String, lowercase: true},
@@ -19,21 +19,14 @@ Comment = new Schema({
 });
 
 var blogSchema = mongoose.Schema({
-
+    // add like unlike feature later
     title:{
         type:String,
         required:true
     },
-    text:{
+    en:{
         type:String,
         required:true
-    },
-    author:{
-        type:String,
-        name:String,
-        email:{ type:String, lowercase: true},
-        required:false,
-        default:"anonymous"
     },
     comments: {type: [Comment]},
     createDate:{

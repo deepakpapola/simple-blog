@@ -1,4 +1,7 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertComponent } from './components/alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AdminModule } from './admin/admin.module';
 import { routing } from './app.routing';
@@ -13,10 +16,13 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     AboutusComponent,
-    BlogsComponent
+    BlogsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     HttpClientModule,
     routing,
     AdminModule

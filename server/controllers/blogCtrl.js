@@ -9,8 +9,10 @@ module.exports = {
     //         return;
     //     })
     // },
-    //add user
-    addBlog : (req,res) => { console.log(req.body);
+                                              //add user  admin panel              /////////////////////////////////////////////////
+    addBlog : (req,res) => { 
+        console.log('add blog route hit');
+        console.log('req body for html data',req.body);
         
     },
 

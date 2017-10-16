@@ -15,11 +15,12 @@ var port     = process.env.PORT || 3000;
 mongoose.connect(config.database);
 app.use(cors());
 
-app.use(BodyParser.urlencoded({extended:true}));
+app.use(BodyParser.urlencoded({extended:false}));
 app.use(BodyParser.json());
-
+app.use(express.static(__dirname + '/'));
+app.use('/bower_components',  express.static(path.join(__dirname, '../bower_components')));
 app.use(express.static(path.join(__dirname,'./dist')));
-
+app.use(express.static(path.join(__dirname,'./uploads')));
 app.use('/',routes);
 
 app.get('*',(req,res) => {
@@ -34,14 +35,14 @@ app.use((req, res, next) =>{
     next(err);
   });
 // error handler
-app.use((err, req, res, next) =>{
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use((err, req, res, next) =>{
+//     // set locals, only providing error in development
+//     res.locals.message = err.message;
+//     res.locals.error = req.app.get('env') === 'development' ? err : {};
   
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
+//     // render the error page
+//     res.status(err.status || 500);
+//     res.render('error');
+// });
  
 app.listen(port,() => console.log('running on port',port));
