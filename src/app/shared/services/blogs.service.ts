@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BlogsService {
@@ -10,16 +11,17 @@ export class BlogsService {
 
   constructor(private http:HttpClient) { }
 
-  newblog(blogHtml,title) {
+  newblog(en,title) {
 
    // console.log(blogHtml);
-   return this.http.post(this.baseUrl+`/newBlog`,{title,blogHtml});
+   return this.http.post(this.baseUrl+`/newBlog`,{title,en})
+   .map(data => data);
   }
 
-  // getBlogs() {
-  //   return this.http.get(`${this.baseUrl}/users`)
-  //     .map((response:Response) => response.json());
-  // }
+  getBlogs() { console.log('get blogs servis runng');
+    return this.http.get(`${this.baseUrl}/allBlogs`)
+    .map((data) => data);
+  }
 
   // delete(id: string) {
     

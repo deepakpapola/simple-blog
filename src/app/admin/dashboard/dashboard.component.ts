@@ -43,32 +43,39 @@ export class DashboardComponent implements OnInit {
       fileUploadURL: 'http://localhost:3000/fileUpload'
     };
 
-    constructor(private blogService:BlogsService, public _ns: NotificationsService,private http:HttpClient ){ }
+    constructor(private blogService:BlogsService, public notify: NotificationsService,private http:HttpClient ){ }
 
     ngOnInit() {
 
     }
     // add new blog ////////////
     newBlog(){
-        console.log(this.editorContent,this.title);
-       this._ns.info('Congrates!', 'successfully uploaded.', {
-        position: ["top", "right"],
-        timeOut: 3000,
-        showProgressBar:false,
-        pauseOnHover: true,
-        lastOnBottom:true,        
-        animate:"scale",
-        clickToClose: true
-      });
+      console.log(this.editorContent,this.title);
 
        this.blogService.newblog(this.editorContent,this.title)
-       .subscribe(data => {
-          
-          // if(data['success'] == true) {
-          //   console.log(data)
-          // } else {
+       .subscribe(data => {  
+          if(data['success'] == true) {
             
-          // }
+            this.notify.success('saved!', data['success'], {
+              position: ["top", "right"],
+              timeOut: 3000,
+              showProgressBar:false,
+              pauseOnHover: true,
+              lastOnBottom:true,        
+              animate:"scale",
+              clickToClose: true
+            });
+          } else {
+            this.notify.error('Oops!', data['success'], {
+              position: ["top", "right"],
+              timeOut: 3000,
+              showProgressBar:false,
+              pauseOnHover: true,
+              lastOnBottom:true,        
+              animate:"scale",
+              clickToClose: true
+            });
+          }
         });
     }
 }

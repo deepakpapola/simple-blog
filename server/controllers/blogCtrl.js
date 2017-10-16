@@ -1,20 +1,34 @@
+import Blogs from '../schema/bloges';
+
 module.exports = {
     //get all blogs
 
-    // getUsers: (req,res) => { // console.log('get all users func');
-    //     User.find({},'name email ._id date',(err,users) => {
-    //         if(err)
-    //             return done(err)
-    //         res.send(users);
-    //         return;
-    //     })
-    // },
-                                              //add user  admin panel              /////////////////////////////////////////////////
-    addBlog : (req,res) => { 
-        console.log('add blog route hit');
-        console.log('req body for html data',req.body);
-        
+    getBlogs: (req,res) => {  console.log('get all blogs rout hit');
+        Blogs.find({},(err,blogs) => {
+            if(err)
+                return done(err)
+            res.send(blogs);
+            return;
+        })
     },
+            //add user  admin panel   
+    addBlog : (req,res) => {
+        console.log('add blog route hit and data is ',req.body);
+        
+        var {title,en} = req.body;
+
+        var newBlog = new Blogs({title,en});
+        newBlog.save((err) => {
+            if(err) {
+                console.log('error while add new blog',err);
+                res.send({ success:false, message:'Error while uploading,Try again' })
+            } else {
+                console.log('new blog added');
+                res.send({ success:true, message:'New blog uploaded ' });
+            }
+            return;
+        })
+    }
 
     // //edit user
     // editUser: (req,res) =>  {

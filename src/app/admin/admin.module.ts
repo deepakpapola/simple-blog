@@ -1,3 +1,5 @@
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminbloglistComponent } from './adminbloglist/adminbloglist.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogsService } from '../shared/services/blogs.service';
@@ -8,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 
 @NgModule({
   imports: [
@@ -21,6 +24,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     BlogsService,
     HttpClientModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent, AdminbloglistComponent, AdminHomeComponent]
 })
 export class AdminModule { }

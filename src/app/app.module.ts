@@ -1,3 +1,4 @@
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertComponent } from './components/alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +18,8 @@ import { AppComponent } from './app.component';
     AppComponent,
     AboutusComponent,
     BlogsComponent,
-    AlertComponent
+    AlertComponent,
+    NavbarComponent 
   ],
   imports: [
     BrowserModule,

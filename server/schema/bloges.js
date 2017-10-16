@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+var Schema = mongoose.Schema;
 
 Comment = new Schema({
     text:{
@@ -20,14 +21,9 @@ Comment = new Schema({
 
 var blogSchema = mongoose.Schema({
     // add like unlike feature later
-    title:{
-        type:String,
-        required:true
-    },
-    en:{
-        type:String,
-        required:true
-    },
+    title:String,
+    en:String,
+    
     comments: {type: [Comment]},
     createDate:{
         type:Date,
